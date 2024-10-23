@@ -4,11 +4,9 @@ def main():
     char_count = count_characters(text)
     print_report(text, char_count)
 
-
 def get_num_words(text):
     words = text.split()
     return len(words)
-
 
 def get_book_text(path):
     with open(path) as f:
@@ -16,11 +14,9 @@ def get_book_text(path):
 
 def count_characters(text):
     # Convert the text to lowercase
-    text = text.lower()
-    
+    text = text.lower()    
     # Initialize an empty dictionary to hold character counts
     char_count = {}
-
     # Iterate through each character in the text
     for char in text:
         # Only count alphabetic characters
@@ -36,14 +32,14 @@ def count_characters(text):
 
 def print_report(text, char_count):
     print(f"--- Begin report of books/frankenstein.txt ---")
-    print(f"{get_num_words(text)} words found in the document\n")    
-    # Convert dictionary to a list of tuples and sort by the number of occurrences
+    print(f"{get_num_words(text)} words found in the document\n")
+    # Convert dictionary to a list of dictionaries
     char_list = [{"char": char, "num": count} for char, count in char_count.items()]
-    char_list.sort(key=lambda x: x["num"], reverse=True)    
+    #sort by the number of occurrences
+    char_list.sort(key=lambda x: x["num"], reverse=True)
     # Print sorted character counts
     for entry in char_list:
-        print(f"The '{entry['char']}' character was found {entry['num']} times")
-    
+        print(f"The '{entry['char']}' character was found {entry['num']} times")    
     print(f"--- End report ---")
     
 main()
